@@ -1,7 +1,7 @@
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return res.status(405).end();
   const { prompt } = req.body || {};
-  if (!prompt || prompt.length > 4000) return res.status(400).json({ error: 'bad_request' });
+  if (!prompt || prompt.length > 8000) return res.status(400).json({ error: 'bad_request' });
 
   try {
     const r = await fetch('https://api.anthropic.com/v1/messages', {
